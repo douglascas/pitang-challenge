@@ -1,0 +1,35 @@
+.p-field {
+	
+	.required:after {
+		content: " *";
+		color: red;
+	}
+
+	margin: 8px 0;
+
+	label {
+		display: block;
+		padding: 8px 0;
+	}
+
+	.p-error {
+		display: block;
+		padding-top: 4px;
+	}
+
+	textarea {
+		width: 100%;
+	}
+}
+
+.radio-group {
+	display: flex;
+	gap: 8px;
+}
+
+@media screen and (max-width: 768px) {
+	.radio-group {
+		flex-flow: column;
+	}
+}
+

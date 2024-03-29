@@ -1,0 +1,29 @@
+<p-card [style]="{'width': '100%', 'max-height': '225px', 'padding': '0.5 rem'}" [class.pointer]="isMobile"
+	(click)="viewItem(task)">
+	<div class="flex flex-row">
+		<div class="flex flex-column col">
+
+			<strong class="p-card-header">{{task.title}}</strong>
+
+			<div class=" flex flex-row flex-wrap">
+				<div class="flex flex-row">
+					<div class="task-content">
+						<span class="description text-justify">{{task.description}}</span>
+						<div class="d-block pt-4" [ngSwitch]="task.status">
+							<p-tag *ngSwitchCase="StatusEnum.Pending" severity="warning">{{StatusEnum.Pending}}</p-tag>
+							<p-tag *ngSwitchCase="StatusEnum.InProgress" severity="success">{{StatusEnum.InProgress}}</p-tag>
+							<p-tag *ngSwitchDefault severity="secondary">{{StatusEnum.Completed}}</p-tag>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="flex align-items-center justify-content-center flex-row gap-2 px-2 buttons-container">
+			<button pButton pRipple type="button" [icon]="task.status===StatusEnum.Completed ? 'pi pi-eye' : 'pi pi-pencil'"
+				class="p-button-outlined" (click)="editItem(task)"></button>
+			<button pButton pRipple type="button" icon="pi pi-trash" class="p-button-outlined p-button-danger"
+				(click)="deleteItem(task)"></button>
+		</div>
+	</div>
+</p-card>

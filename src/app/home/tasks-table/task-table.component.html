@@ -1,0 +1,14 @@
+<p-dataView class="mt-6" [value]="tasks" emptyMessage="Não há tarefas para o filtro selecionado.">
+	<ng-template pTemplate="header">
+		<p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Filtrar por"
+			(onChange)="onSortChange($event)" [style]="{'min-width':'15em'}"></p-dropdown>
+	</ng-template>
+
+	<ng-template pTemplate="listItem">
+		<div *ngFor="let taskItem of tasks">
+			<div class="col-12">
+				<app-task-item [task]="taskItem" (onItemDelete)="deleteTaskFromList($event)" />
+			</div>
+		</div>
+	</ng-template>
+</p-dataView>

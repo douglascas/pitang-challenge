@@ -1,0 +1,79 @@
+<div class="container">
+
+	<h3>{{getLabel()}}</h3>
+
+	<form [formGroup]="taskForm">
+		<div class="p-field">
+			<label class="required" for="title">Título: </label>
+			<input type="text" id="title" pInputText formControlName="title">
+			<small class="p-error">
+				<span *ngIf="!taskForm.get('title')?.value && taskForm.get('title')?.touched">Título é obrigatório.</span>
+				<span
+					*ngIf="(taskForm.get('title')?.value && taskForm.get('title')?.value.length < 5) && taskForm.get('title')?.touched">
+					Título precisa ao menos 5 caracteres.
+				</span>
+			</small>
+		</div>
+
+		<div class="p-field">
+			<label class="required" for="description">Descrição:</label>
+			<textarea id="description" rows="5" cols="30" pInputTextarea formControlName="description"></textarea>
+
+			<small class="p-error">
+				<span *ngIf="!taskForm.get('description')?.value && taskForm.get('description')?.touched">
+					Descrição é obrigatória.
+				</span>
+				<span
+					*ngIf="(taskForm.get('description')?.value && taskForm.get('title')?.value.length > 500) && taskForm.get('description')?.touched">
+					Descrição é obrigatória.
+				</span>
+			</small>
+		</div>
+
+		<ng-container *ngIf="isEditMode">
+			<div class="p-field radio-group flex flex-wrap required">
+				<label class="required" for="description">Status:</label>
+
+				<p-radioButton name="status" [value]="StatusEnum.Pending" [label]="StatusEnum.Pending"
+					formControlName="status"></p-radioButton>
+				<p-radioButton name="status" [value]="StatusEnum.InProgress" [label]="StatusEnum.InProgress"
+					formControlName="status"></p-radioButton>
+				<p-radioButton name="status" [value]="StatusEnum.Completed" [label]="StatusEnum.Completed"
+					formControlName="status"></p-radioButton>
+			</div>
+		</ng-container>
+
+		<div class="flex col gap-4 pl-0">
+			<div class="p-field">
+				<label class="required" for="description">Criado em:</label>
+				<p-calendar inputId="basic" styleClass="form-control" dateFormat="dd/mm/yy" [maxDate]="maxDate"
+					placeholder="dd/mm/aaaa" formControlName="created"></p-calendar>
+			</div>
+
+			<div class="p-field">
+				<label for="description">Data de conclusão:</label>
+				<p-calendar inputId="basic" styleClass="form-control" dateFormat="dd/mm/yy" placeholder="dd/mm/aaaa"
+					formControlName="completionDate"></p-calendar>
+			</div>
+		</div>
+
+		<ng-container *ngIf="isEditMode">
+			<div class="p-field" *ngIf="taskForm.get('finished')?.value">
+				<p>Finalizado em: {{taskForm.get('finished')?.value | date:'dd/MM/yyyy - HH:mm'}}</p>
+			</div>
+		</ng-container>
+	</form>
+
+	<div class="mt-4 flex justify-content-between">
+		<button pButton type="button" label="Voltar" class="p-button-raised p-button-outlined" (click)="goBack()"></button>
+
+
+
+		<div class="flex gap-2">
+			<button type="button" pButton label="Apagar" class="p-button-raised p-button-outlined p-button-danger"
+				(click)="deleteTask()"></button>
+			<button *ngIf="!isFinishedTask()" type="submit" pButton [disabled]="taskForm.invalid" label="Salvar"
+				(click)="save()"></button>
+		</div>
+	</div>
+</div>

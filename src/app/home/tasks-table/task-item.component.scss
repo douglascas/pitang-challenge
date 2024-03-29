@@ -1,0 +1,43 @@
+@import './../../../styles.scss';
+
+.pointer {
+	cursor: pointer;
+}
+
+.p-card {
+	.p-card-body {
+		padding: 8px !important;
+	}
+
+	.p-card-title {
+		margin: 0 !important;
+		padding: 0 8px !important;
+	}
+
+	.p-card-content {
+		padding: 8px 0 !important;
+
+		.buttons-container {
+			width: 80px;
+		}
+
+		@media screen and (max-width: 768px) {
+			.buttons-container {
+				display: none !important;
+			}
+		}
+	}
+}
+
+.task-content {
+	.description {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-height: 40px;
+	}
+
+
+}
