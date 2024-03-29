@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+$primary: #3B82F6;
+$darkGray: #64748B;
+
+body {
+	margin: 0;
+
+	/* Estilos base */
+	.container {
+		margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+		padding: 20px; /* Adiciona algum espaço interno */
+	}
+
+	/* Estilos para desktop ultrawide */
+	@media screen and (min-width: 2560px) {
+		.container {
+			width: 60%; /* Ocupa 60% da largura disponível */
+		}
+	}
+
+	/* Estilos para desktop normal */
+	@media screen and (max-width: 2559px) and (min-width: 1024px) {
+		.container {
+			width: 80%; /* Ocupa 80% da largura disponível */
+		}
+	}
+
+	/* Estilos para dispositivos móveis */
+	@media screen and (max-width: 1023px) {
+		.container {
+			width: 100%; /* Ocupa 100% da largura disponível */
+		}
+	}
+}
+
