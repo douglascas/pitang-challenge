@@ -11,6 +11,6 @@ Após a instalação das dependências, execute o comando `npm start`, onde irá
 
 ## Observações
 
-- A aplicação segue padrões modernos de desenvolvimento, embarcando conceitos de programação reativa e assíncrona através da biblioteca RXJS e abordando principios como: YAGNI, DRY, KISS e SOLID.
+- A aplicação segue padrões modernos de desenvolvimento, embarcando conceitos de programação reativa e assíncrona através da biblioteca RXJS, responsividade e abordagens de principios como: YAGNI, DRY, KISS e SOLID.
   
 - O projeto está com comentários nos métodos escritos de forma didática, mas que não refletem necessariamente a necessidade dos comentários em questão.
