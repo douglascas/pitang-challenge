@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { StatusEnum, Task } from '../domain/task';
-import { TaskService } from '../service/task.service';
+import { StatusEnum, Task } from '../../models/task';
+import { TaskService } from '../../services/task.service';
 
 @Component({
 	selector: 'app-task',

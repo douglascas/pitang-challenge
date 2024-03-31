@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StatusEnum, Task } from '../../domain/task';
-import { TaskService } from '../../service/task.service';
+import { StatusEnum, Task } from '../../models/task';
 
 @Component({
 	selector: 'app-task-table',
@@ -13,8 +12,6 @@ export class TaskTableComponent implements OnInit {
 	sortKey!: string;
 	sortField!: string;
 	sortOrder!: number;
-
-	constructor(private readonly _taskService: TaskService) { }
 
 	ngOnInit() {
 		this.sortOptions = [
@@ -51,6 +48,10 @@ export class TaskTableComponent implements OnInit {
 		this.tasks = this._tasksBackup;
 	}
 
+	/**
+	 * Após confirmação de remoção de tarefa, o componente não precisa chamar novamente a lista de tarefas, 
+	 * necessitando apenas remover o item em questão da lista já carregada.
+	 */
 	deleteTaskFromList(task: Task): void {
 		this.tasks = this.tasks.filter(_task => _task.id !== task.id)
 	}

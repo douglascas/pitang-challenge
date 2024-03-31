@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TaskService } from '../service/task.service';
-import { StatusEnum, Task } from '../domain/task';
+import { TaskService } from '../../services/task.service';
+import { StatusEnum, Task } from '../../models/task';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { TaskItemComponent } from './home/tasks-table/task-item.component';
-import { TaskPageComponent } from './task-page/task-page.component';
+import { HomeComponent, TaskPageComponent } from './pages/_index';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Rota para a página inicial

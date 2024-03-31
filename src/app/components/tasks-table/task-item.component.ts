@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewEncapsulation } from '@angular/core';
-import { StatusEnum, Task } from '../../domain/task';
-import { TaskService } from '../../service/task.service';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { HostListener } from "@angular/core";
+import { StatusEnum, Task } from '../../models/task';
+import { TaskService } from '../../services/task.service';
 
 @Component({
 	selector: 'app-task-item',
@@ -12,11 +11,8 @@ import { HostListener } from "@angular/core";
 })
 export class TaskItemComponent implements OnInit {
 	private _task!: Task;
-	StatusEnum = StatusEnum;
-
+	StatusEnum = StatusEnum; // usado no template
 	isMobile: boolean = false;
-	showActions: boolean = false;
-
 	@Output() onItemDelete = new EventEmitter<Task>();
 
 	constructor(
@@ -24,10 +20,8 @@ export class TaskItemComponent implements OnInit {
 		private _router: Router,
 	) {
 		if (typeof window !== 'undefined') {
-			console.log(window.innerWidth);
 			this.isMobile = window.innerWidth <= 768;
 		}
-
 	}
 
 	ngOnInit() { }
@@ -41,8 +35,11 @@ export class TaskItemComponent implements OnInit {
 		this._task = value;
 	}
 
+	/**
+	 * Controle de tamanho de tela para renderizar componentes responsivos.
+	 */
 	@HostListener('window:resize', ['$event'])
-	onResize() {
+	onResize(): void {
 		this.isMobile = window.innerWidth <= 768;
 	}
 
@@ -55,11 +52,17 @@ export class TaskItemComponent implements OnInit {
 		}
 	}
 
+	/**
+	 * Redireciona para a rota de edição de tarefas.
+	 */
 	editItem(task: Task): void {
 		const link = ['edit-task', task.id];
 		this._router.navigate(link);
 	}
 
+	/**
+	 * Remove a tarefa selecionada da lista de tarefas.
+	 */
 	deleteItem(task: Task): void {
 		if (confirm(`Deseja excluir a tarefa ${task.title}?`)) {
 			this._taskService.deleteTask(task.id).subscribe({
@@ -68,5 +71,4 @@ export class TaskItemComponent implements OnInit {
 			})
 		}
 	}
-
 }
