@@ -29,4 +29,4 @@ Lines        : 68.1% ( 79/116 )
 
 - A aplicação segue padrões modernos de desenvolvimento, embarcando conceitos de programação reativa e assíncrona através da biblioteca RXJS, responsividade e abordagens de principios como: YAGNI, DRY, KISS e SOLID.
   
-- O projeto está com comentários nos métodos escritos de forma didática, mas que não refletem necessariamente a necessidade dos comentários em questão.
+- Os comentários realizados nos métodos do projeto foram escritos de forma didática, mesmo nos métodos com lógica autoexplicativa, para facilitar o entendimento durante a avaliação.
