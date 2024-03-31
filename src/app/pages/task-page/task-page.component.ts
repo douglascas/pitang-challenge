@@ -10,13 +10,12 @@ import { TaskService } from '../../services/task.service';
 	templateUrl: 'task-page.component.html',
 	styleUrls: ['task.page.component.scss']
 })
-
 export class TaskPageComponent implements OnInit {
 	task: Task = new Task();
-	maxDate = new Date();
 	taskForm!: FormGroup;
-	isEditMode = false;
 	StatusEnum = StatusEnum;
+	maxDate = new Date();
+	isEditMode = false;
 
 	constructor(
 		private _router: Router,
@@ -34,9 +33,8 @@ export class TaskPageComponent implements OnInit {
 			title: ['', [Validators.required, Validators.minLength(5)]],
 			description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
 			status: [''],
-			created: [''],
+			created: ['', [Validators.required]],
 			completionDate: [''],
-			finished: ['']
 		});
 	}
 
@@ -56,10 +54,9 @@ export class TaskPageComponent implements OnInit {
 		).subscribe({
 			next: (task) => {
 				task.created = new Date(task.created);
-				task.completionDate = new Date(task.completionDate);
-				this.task = task;
+				task.completionDate = task.completionDate ? new Date(task.completionDate) : null as any;
 
-				console.log(task);
+				this.task = task;
 				this.taskForm.patchValue(task);
 
 				if (task.status === StatusEnum.Completed) {

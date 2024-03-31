@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   fetchTasks(): void {
     this._taskService.getTasks().subscribe(tasks => {
-      tasks.sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());
+      tasks.sort((a, b) => new Date(b.lastEdit).getTime() - new Date(a.lastEdit).getTime());
       this.tasks = tasks;
     });
   }

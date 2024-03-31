@@ -6,14 +6,13 @@ export enum StatusEnum {
 }
 
 export class Task {
-	id!: number;
+	id!: string;
 	title!: string;
 	description!: string;
 	status?: StatusEnum;
 	created!: Date;
 	completionDate!: Date;
 	lastEdit!: Date;
-	finished!: Date;
 
 	constructor(init?: Partial<Task>) {
 		if (init) {

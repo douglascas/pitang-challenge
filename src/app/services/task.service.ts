@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 import { StatusEnum, Task } from '../models/task';
 
 @Injectable({
@@ -8,26 +9,15 @@ import { StatusEnum, Task } from '../models/task';
 })
 export class TaskService {
 
-	private _tasks: Task[] = [];
 	private _apiUrl = 'http://localhost:3000/tasks';
 
 	constructor(private _http: HttpClient) { }
 
 	/**
-	 * Obtém o valor do próximo ID para salvar no db do Json Server, garantindo que na criação de uma nova tarefa, 
-	 * sempre tenha um id único e autoincrementado. 
-	 */
-	private _getNextId(): number {
-		const lastIndexId = this._tasks[this._tasks.length - 1]?.id || this._tasks.length;
-		return lastIndexId + 1;
-	}
-
-	/**
 	 * Obtém a lista de tarefas da API.
 	 */
 	getTasks(): Observable<Task[]> {
-		return this._http.get<Task[]>(this._apiUrl)
-			.pipe(tap(tasks => this._tasks = tasks));
+		return this._http.get<Task[]>(this._apiUrl);
 	}
 
 	/**
@@ -44,16 +34,19 @@ export class TaskService {
 	addTask(task: Task): Observable<Task> {
 		task = {
 			...task,
-			id: this._getNextId(),
+			id: uuidv4(),
 			status: StatusEnum.Pending,
-			completionDate: task.completionDate || new Date(),
+			lastEdit: new Date(),
+			completionDate: task.completionDate || null,
 		}
+
 		return this._http.post<Task>(this._apiUrl, task);
 	}
 
 	/**
 	 * Atualiza a tarefa selecionada com base nos parâmetros informados no formulário.
-	 * Caso o `status` seja alterado para `Concluído`, também é adicionado alguns atributos no objeto em questão.
+	 * Caso o `status` seja alterado para `Concluído`, também é adicionado alguns atributos no objeto em questão, 
+	 * além de substituir a data de conclusão (estimativa), caso tenha sido preenchida, para a data real de conclusão.
 	 */
 	updateTask(task: Task): Observable<Task> {
 		task.lastEdit = new Date();
@@ -61,9 +54,7 @@ export class TaskService {
 		if (task.status === StatusEnum.Completed) {
 			task = {
 				...task,
-				lastEdit: new Date(),
-				completionDate: task.completionDate || new Date(),
-				finished: new Date(),
+				completionDate: new Date(),
 			};
 		}
 
@@ -74,7 +65,7 @@ export class TaskService {
 	/**
 	 * Remove uma tarefa do db com base em seu `id`.
 	 */
-	deleteTask(id: number): Observable<any> {
+	deleteTask(id: string): Observable<any> {
 		const url = `${this._apiUrl}/${id}`;
 		return this._http.delete<Task>(url);
 	}
