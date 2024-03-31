@@ -23,7 +23,7 @@ export class TaskService {
 	/**
 	 * Obtém uma tarefa específica com base no ID informado.
 	 */
-	getTaskById(id: number): Observable<Task> {
+	getTaskById(id: string): Observable<Task> {
 		const url = `${this._apiUrl}/${id}`;
 		return this._http.get<Task>(url);
 	}

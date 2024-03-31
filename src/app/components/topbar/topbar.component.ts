@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })
-export class TopbarComponent {
-
-}
+export class TopbarComponent { }
