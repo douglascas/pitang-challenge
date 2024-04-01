@@ -5,33 +5,35 @@
 $primary: #3B82F6;
 $darkGray: #64748B;
 
-body {
+html, body {
+	height: 100%;
 	margin: 0;
+	padding: 0;
 
 	/* Estilos base */
 	.container {
-		margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
-		padding: 20px; /* Adiciona algum espaço interno */
+		margin: 0 auto;
+		padding: 20px;
 	}
 
 	/* Estilos para desktop ultrawide */
 	@media screen and (min-width: 2560px) {
 		.container {
-			width: 60%; /* Ocupa 60% da largura disponível */
+			width: 60%;
 		}
 	}
 
 	/* Estilos para desktop normal */
 	@media screen and (max-width: 2559px) and (min-width: 1024px) {
 		.container {
-			width: 80%; /* Ocupa 80% da largura disponível */
+			width: 80%;
 		}
 	}
 
 	/* Estilos para dispositivos móveis */
 	@media screen and (max-width: 1023px) {
 		.container {
-			width: 100%; /* Ocupa 100% da largura disponível */
+			width: 100%;
 		}
 	}
 }

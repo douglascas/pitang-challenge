@@ -5,6 +5,10 @@
 }
 
 .p-card {
+	:hover {
+		background-color:#f9fafb;
+	}
+
 	.p-card-body {
 		padding: 8px !important;
 	}
@@ -18,7 +22,7 @@
 		padding: 8px 0 !important;
 
 		.buttons-container {
-			width: 80px;
+			width: 120px;
 		}
 
 		@media screen and (max-width: 768px) {
@@ -33,9 +37,14 @@
 	.description {
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
+		-webkit-line-clamp: 3;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		max-height: 40px;
+		max-height: 60px;
+		font-size: medium;
+
+		@media screen and (max-width: 768px) {
+			font-size: small;
+		}
 	}
 }

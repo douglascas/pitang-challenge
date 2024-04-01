@@ -35,6 +35,15 @@
       "created": "2024-03-31T03:00:00.000Z",
       "completionDate": "2024-03-31T22:45:28.779Z",
       "lastEdit": "2024-03-31T22:45:28.779Z"
+    },
+    {
+      "id": "1aa49893-a176-4979-b50e-a6294528a530",
+      "title": "Lorem Ipsum",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "status": "PENDENTE",
+      "created": "2024-03-31T03:00:00.000Z",
+      "completionDate": null,
+      "lastEdit": "2024-04-01T02:13:37.087Z"
     }
   ]
 }
