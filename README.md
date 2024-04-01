@@ -23,7 +23,7 @@ Lines        : 68.1% ( 79/116 )
 ```
 
 - Para visualizar os testes unitários, execute o comando `npm run test`;
-- Para conferir a cobertura, execute o comando `ng test --code-coverage`.
+- Para conferir a cobertura, execute o comando `npm run test:coverage`.
 
 ## Observações
 
