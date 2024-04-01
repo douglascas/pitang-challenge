@@ -2,12 +2,12 @@
 
 Sistema criado para o desafio técnico proposto pela Pitang para a vaga de Frontend.
 
-O projeto foi desenvolvido com Angular na versão 17.3.2.
+O projeto foi desenvolvido com Angular na versão 17.3.2 e todo codebase está na branch `master`.
 
 ## Início
 
-Para inicializar o projeto, primeiro instale as dependências com o comando `npm install`.
-Após a instalação das dependências, execute o comando `npm start`, onde irá ser executado tanto a compilação da aplicação quanto a inicialização do banco de dados interno criado para armazenar as informações.
+- Para inicializar o projeto, primeiro instale as dependências com o comando `npm install`;
+- Após a instalação das dependências, execute o comando `npm start`, onde irá ser executado tanto a compilação da aplicação quanto a inicialização do banco de dados interno criado para armazenar as informações.
 
 ## Testes
 
